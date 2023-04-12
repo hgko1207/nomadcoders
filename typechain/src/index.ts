@@ -16,6 +16,6 @@ class Block implements BlockShape {
 
   static calculateHash(prevHash: string, height: number, data: string) {
     const toHash = `${prevHash}${height}${data}`;
-    return toHash;
+    return crypto.createHash('sha256').update(toHash).digest('hex');
   }
 }
