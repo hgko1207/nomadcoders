@@ -1,8 +1,14 @@
-String sayHello(String name, int age, [String? country = "Korea"]) {
-  return 'Hello ${name}, You are ${age} from the ${country}';
+class Player {
+  final String name = 'eden';
+  final int age = 3;
+
+  void sayName() {
+    print("Hi my name is $name");
+  }
 }
 
 void main() {
-  var result = sayHello("eden", 3);
-  print(result);
+  // new 를 꼭 붙이지 않아도 됩니다.
+  var player = Player();
+  player.sayName();
 }
