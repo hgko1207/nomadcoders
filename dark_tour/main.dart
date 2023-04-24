@@ -1,14 +1,19 @@
-class Player {
-  final String name = 'eden';
-  final int age = 3;
+class Team {
+  String name;
+  int members;
+  String description;
 
-  void sayName() {
-    print("Hi my name is $name");
-  }
+  Team({required this.name, required this.members, required this.description});
+
+  Team.createTeam({required String name, required int members})
+      : this.name = name,
+        this.members = members,
+        this.description = "$name team is good.";
 }
 
 void main() {
-  // new 를 꼭 붙이지 않아도 됩니다.
-  var player = Player();
-  player.sayName();
+  var team = Team.createTeam(
+    name: "Tottenham",
+    members: 25,
+  );
 }
