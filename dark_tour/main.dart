@@ -1,19 +1,19 @@
-class Team {
+abstract class Person {
+  void walk();
+}
+
+class Player extends Person {
   String name;
-  int members;
-  String description;
+  String team;
 
-  Team({required this.name, required this.members, required this.description});
+  Player({required this.name, required this.team});
 
-  Team.createTeam({required String name, required int members})
-      : this.name = name,
-        this.members = members,
-        this.description = "$name team is good.";
+  void walk() {
+    print("Player is walking");
+  }
 }
 
 void main() {
-  var team = Team.createTeam(
-    name: "Tottenham",
-    members: 25,
-  );
+  var player = Player(name: 'eden', team: 'red');
+  player.walk();
 }
