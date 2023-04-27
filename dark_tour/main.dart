@@ -1,19 +1,26 @@
-abstract class Person {
-  void walk();
+mixin Strong {
+  final double strengthLevel = 100.5;
 }
 
-class Player extends Person {
-  String name;
-  String team;
+mixin Tall {
+  final double height = 180;
+}
 
-  Player({required this.name, required this.team});
-
-  void walk() {
-    print("Player is walking");
+mixin QuickRunner {
+  void run() {
+    print("run!!");
   }
 }
 
+class Player with Strong, Tall, QuickRunner {
+  final String name;
+
+  Player({required this.name});
+}
+
 void main() {
-  var player = Player(name: 'eden', team: 'red');
-  player.walk();
+  var player = Player(
+    name: "eden",
+  );
+  player.run(); // run!! 출력
 }
