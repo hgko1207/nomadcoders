@@ -1,77 +1,3 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ npm install
-```
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
-
 ## Insomnia
 
 Rest 클라이언트.
@@ -83,3 +9,120 @@ Insomnia API 설계 플랫폼과의 협업 및 표준을 통해 고품질 API를
 Insomnia 다운로드
 
 - https://insomnia.rest/download
+
+## Controller
+
+컨트롤러 생성
+
+```bash
+nest g co controller-name
+```
+
+### constructor
+
+constructor 메서드는 클래스의 인스턴스 객체를 생성하고 초기화하는 특별한 메서드입니다.
+또한 constructor를 사용하면 다른 모든 메서드 호출보다 앞선 시점인,
+인스턴스 객체를 초기화할 때 수행할 초기화 코드를 정의할 수 있습니다.
+
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes/constructor
+
+## Service
+
+서비스 생성
+
+```bash
+nest g s service-name
+```
+
+### Built-in HTTP exceptions
+
+Nest는 기본 HttpException에서 상속되는 일련의 표준 예외를 제공합니다. 이들은 @nestjs/common 패키지에서 노출되며 가장 일반적인 HTTP 예외를 나타냅니다.
+
+https://docs.nestjs.com/exception-filters#built-in-http-exceptions
+
+## Param decorators
+
+Nest 는 HTTP 라우트 핸들러와 함께 사용할 수 있는 유용한 매개변수 데코레이터 세트를 제공합니다.
+다음은 제공된 데코레이터와 이들이 나타내는 일반 Express(또는 Fastify) 객체의 목록과 사용 예시입니다.
+
+### @Param
+
+Param은 Path Variable을 받아올 때 사용합니다. (예, /users/123)
+
+```ts
+// NestJS
+@Param(param?: string)
+
+// ExpressJS
+req.params / req.params[param]
+```
+
+```ts
+import { Controller, Get, Param } from '@nestjs/common';
+
+@Controller('movies')
+export class MoviesController {
+  @Get('/:id')
+  getOne(@Param('id') movieId: string) {
+    return `This will return one movie with the id: ${movieId}`;
+  }
+}
+```
+
+### @Body
+
+Body는 JSON 형식으로 받아올 때 사용합니다.
+
+```ts
+// NestJS
+@Body(param?: string)
+
+// ExpressJS
+req.body / req.body[param]
+```
+
+```ts
+import { Body, Controller, Param, Patch, Post } from '@nestjs/common';
+
+@Controller('movies')
+export class MoviesController {
+  @Post()
+  create(@Body() movieData) {
+    return movieData;
+  }
+
+  @Patch('/:id')
+  update(@Param('id') movieId: string, @Body() updateData) {
+    return {
+      updateData: movieId,
+      ...updateData,
+    };
+  }
+}
+```
+
+### @Query
+
+Query는 Query Parameter를 받아올 때 사용합니다. (예, /users?id=123)
+
+```ts
+// NestJS
+@Query(param?: string)
+
+// ExpressJS
+req.query / req.query[param]
+```
+
+```ts
+import { Controller, Get, Query } from '@nestjs/common';
+
+@Controller('movies')
+export class MoviesController {
+  @Get('search')
+  search(@Query('year') year: string) {
+    return `We are searching for a movie made after: ${year}`;
+  }
+}
+```
+
+https://docs.nestjs.com/custom-decorators#param-decorators
