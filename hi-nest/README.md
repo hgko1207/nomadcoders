@@ -126,3 +126,14 @@ export class MoviesController {
 ```
 
 https://docs.nestjs.com/custom-decorators#param-decorators
+
+## Partial
+
+input validation types(DTO라고도 함)을 빌드할 때 동일한 유형에 대한 create 및 update 변형을 빌드하는 것이 종종 유용합니다. 예를 들어, create에는 모든 필드가 필요할 수 있지만 update는 모든 필드를 선택 사항으로 만들 수 있습니다. Nest는 이 작업을 더 쉽게 만들고 상용구를 최소화하기 위해 PartialType() 유틸리티 함수를 제공합니다. PartialType() 함수는 입력 유형의 모든 속성이 선택 사항으로 설정된 유형(클래스)을 반환합니다.
+
+```shell
+npm i @nestjs/mapped-types
+```
+
+- https://docs.nestjs.com/openapi/mapped-types#partial
+- https://github.com/typestack/class-validator
