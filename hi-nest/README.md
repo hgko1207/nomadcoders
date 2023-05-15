@@ -34,6 +34,14 @@ https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes/construct
 nest g s service-name
 ```
 
+## Module
+
+모듈 생성
+
+```bash
+nest g mo module-name
+```
+
 ### Built-in HTTP exceptions
 
 Nest는 기본 HttpException에서 상속되는 일련의 표준 예외를 제공합니다. 이들은 @nestjs/common 패키지에서 노출되며 가장 일반적인 HTTP 예외를 나타냅니다.
@@ -137,3 +145,17 @@ npm i @nestjs/mapped-types
 
 - https://docs.nestjs.com/openapi/mapped-types#partial
 - https://github.com/typestack/class-validator
+
+## Performance (Fastify)
+
+기본적으로 Nest는 Express 프레임워크를 사용합니다. 앞서 언급했듯이 Nest는 Fastify와 같은 다른 라이브러리와의 호환성도 제공합니다.
+Fastify는 Express와 유사한 방식으로 설계 문제를 해결하기 때문에 Nest에 대한 좋은 대안 프레임워크를 제공합니다. fastify는 Express보다 훨씬 빠르며 거의 2배 더 나은 벤치마크 결과를 달성합니다.
+
+- https://docs.nestjs.com/techniques/performance#performance-fastify
+
+## Jest
+
+Jest는 단순함에 초점을 맞춘 유쾌한 JavaScript 테스팅 프레임워크입니다.
+Babel, TypeScript, Node, React, Angular, Vue 등을 사용하는 프로젝트에서 작동합니다!
+
+- https://jestjs.io/
