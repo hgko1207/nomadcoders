@@ -1,4 +1,6 @@
-# NextJS Introduction
+# NextJS 시작하기
+
+## NextJS Introduction
 
 ```shell
 D:\project\Study\nomadcoders>npx create-next-app@latest
