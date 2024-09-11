@@ -79,3 +79,8 @@ deactivate
 ```sh
 rm -rf env
 ```
+
+### jupyter Notebooks
+
+1. notebook.ipynb 파일 생성
+2. Select Kernel 클릭 후 가상 환경 선택
